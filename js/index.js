@@ -6,13 +6,16 @@ const destinationImage = document.querySelector(".destination-img")
 
 
 // 1
-destination.addEventListener("click", function colorswap(){
+destination.addEventListener("click", e=> {
     destination.colorIdx = destination.colorIdx || 0;
-    destination.style.backgroundColor = colors[destination.colorIdx++ % colors.length]
+    destination.style.backgroundColor = colors[destination.colorIdx++ % colors.length];
 })
 
 // 2
-destinationImage.addEventListener("mouseenter", e => destinationImage.style.transform = "scale(3.0)")
+destinationImage.addEventListener("mouseenter", e => {
+    destinationImage.style.transform = "scale(3.0)";
+})
+
 // 3
 destinationImage.addEventListener("mouseleave", e => destinationImage.style.transform = "scale(1.0)")
 
@@ -30,8 +33,7 @@ console.log(links)
 links.forEach(item => item.addEventListener("mouseover", e =>{ 
     item.style.color = "blue";
     item.style.fontSize = "3rem";
-    }
-))
+}))
 
 //6
 links.forEach(item => item.addEventListener("mouseleave", e =>{ 
@@ -65,4 +67,15 @@ button.forEach(item => item.addEventListener("click", e=>{
 
 //10
 const imageclick = document.querySelectorAll("img")
-imageclick.forEach(item=> item.addEventListener("click", e=> item.src = "https://slack-imgs.com/?c=1&o1=gu&url=https%3A%2F%2Femoji.slack-edge.com%2FT4JUEB3ME%2Flumber_christian%2Fd653ee14f5ca4b8e.jpg"))
+imageclick.forEach(item=> item.addEventListener("click", e=>{ 
+    item.src = "https://slack-imgs.com/?c=1&o1=gu&url=https%3A%2F%2Femoji.slack-edge.com%2FT4JUEB3ME%2Flumber_christian%2Fd653ee14f5ca4b8e.jpg"
+    e.stopPropagation(); // STOP PROPOGATION SUCCESSFULLY
+}))
+
+
+/// PREVENT DEFAULT ON NAV LINKS
+
+links.forEach(item => item.addEventListener("click", e=> e.preventDefault()))
+
+
+//// STREEEEEETCH
